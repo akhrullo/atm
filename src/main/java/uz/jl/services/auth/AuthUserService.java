@@ -7,6 +7,6 @@ import uz.jl.services.BaseService;
 /**
  * @author Elmurodov Javohir, Mon 6:23 PM. 11/29/2021
  */
-public class AuthUserService extends BaseService<AuthUser, AuthUserRepository,UserMapper> {
-
-}
+//public class AuthUserService extends BaseService<AuthUser, AuthUserRepository,UserMapper> {
+//
+//}
