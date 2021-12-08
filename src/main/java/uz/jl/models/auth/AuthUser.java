@@ -25,6 +25,7 @@ public class AuthUser extends Auditable {
     private Language language;
 
     public AuthUser() {
+        super();
         this.language = AppConfig.language;
         this.role = Role.ANONYMOUS;
     }

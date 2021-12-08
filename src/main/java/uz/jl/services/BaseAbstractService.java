@@ -4,6 +4,8 @@ package uz.jl.services;
  * @author Elmurodov Javohir, Mon 5:44 PM. 12/6/2021
  */
 
+import uz.jl.response.ResponseEntity;
+
 import java.util.List;
 
 /**
@@ -12,18 +14,18 @@ import java.util.List;
  * @param <M> -> Mapper (Which maps entity to Dto or vise versa)
  */
 
-public abstract class BaseService<E, R, M> {
+public abstract class BaseAbstractService<E, R, M> {
     protected R repository;
     protected M mapper;
 
-    public BaseService(R repository, M mapper) {
+    public BaseAbstractService(R repository, M mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
 
-    protected abstract List<E> getAll();
+    public abstract ResponseEntity<List<E>> getAll();
 
-    protected abstract E get(String id);
+    public abstract ResponseEntity<E> get(String id);
 
 
 }
