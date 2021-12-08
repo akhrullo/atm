@@ -1,11 +1,16 @@
 package uz.jl;
 
-import uz.jl.ui.BranchUI;
-import uz.jl.ui.MenuUI;
-import uz.jl.ui.components.MenuVal;
+import uz.jl.enums.auth.Role;
+import uz.jl.enums.settings.Language;
+import uz.jl.mapper.auth.AuthUserMapper;
+import uz.jl.models.auth.AuthUser;
+import uz.jl.services.filesystems.DB;
+import uz.jl.ui.*;
 import uz.jl.utils.Color;
 import uz.jl.utils.Input;
 import uz.jl.utils.Print;
+
+import java.util.Collections;
 
 import static uz.jl.ui.components.MenuVal.*;
 
@@ -13,55 +18,72 @@ import static uz.jl.ui.components.MenuVal.*;
  * @author Elmurodov Javohir, Mon 6->14 PM. 11/29/2021
  */
 public class App {
+    static AdminUI adminUI;
+    static AtmUI atmUI;
+    static AuthUI authUI;
+    static BranchUI branchUI;
+    static ClientUI clientUI;
+    static EmployeeUI employeeUI;
+    static HrUI hrUI;
+
+    static {
+        adminUI = AdminUI.getInstance();
+        atmUI = AtmUI.getInstance();
+        authUI = AuthUI.getInstance();
+        branchUI = BranchUI.getInstance();
+        clientUI = ClientUI.getInstance();
+        employeeUI = EmployeeUI.getInstance();
+        hrUI = HrUI.getInstance();
+    }
 
     public static void main(String[] args) {
         MenuUI.show();
         String choice = Input.getStr("?->");
         switch (choice.toUpperCase()) {
-            case BRANCH_CREATE -> BranchUI.create();
-            case BRANCH_BLOCK -> BranchUI.block();
-            case BRANCH_UNBLOCK -> BranchUI.unblock();
-            case BRANCH_DELETE -> BranchUI.delete();
-            case BRANCH_LIST -> BranchUI.list();
+            case BRANCH_CREATE -> branchUI.create();
+            case BRANCH_BLOCK -> branchUI.block();
+            case BRANCH_UNBLOCK -> branchUI.unblock();
+            case BRANCH_DELETE -> branchUI.delete();
+            case BRANCH_LIST -> branchUI.list();
 
-            case ADMIN_CREATE -> AdminUI.create();
-            case ADMIN_BLOCK -> AdminUI.block();
-            case ADMIN_UNBLOCK -> AdminUI.unblock();
-            case ADMIN_DELETE -> AdminUI.delete();
-            case ADMIN_LIST -> AdminUI.list();
+            case ADMIN_CREATE -> adminUI.create();
+            case ADMIN_BLOCK -> adminUI.block();
+            case ADMIN_UNBLOCK -> adminUI.unblock();
+            case ADMIN_DELETE -> adminUI.delete();
+            case ADMIN_LIST -> adminUI.list();
 
-            case HR_CREATE -> HrUI.create();
-            case HR_BLOCK -> HrUI.block();
-            case HR_UNBLOCK -> HrUI.unblock();
-            case HR_DELETE -> HrUI.delete();
-            case HR_LIST -> HrUI.list();
+            case HR_CREATE -> hrUI.create();
+            case HR_BLOCK -> hrUI.block();
+            case HR_UNBLOCK -> hrUI.unblock();
+            case HR_DELETE -> hrUI.delete();
+            case HR_LIST -> hrUI.list();
 
-            case EMPLOYEE_CREATE -> EmployeeUI.create();
-            case EMPLOYEE_BLOCK -> EmployeeUI.block();
-            case EMPLOYEE_UNBLOCK -> EmployeeUI.unblock();
-            case EMPLOYEE_DELETE -> EmployeeUI.delete();
-            case EMPLOYEE_LIST -> EmployeeUI.list();
+            case EMPLOYEE_CREATE -> employeeUI.create();
+            case EMPLOYEE_BLOCK -> employeeUI.block();
+            case EMPLOYEE_UNBLOCK -> employeeUI.unblock();
+            case EMPLOYEE_DELETE -> employeeUI.delete();
+            case EMPLOYEE_LIST -> employeeUI.list();
 
 
-            case CLIENT_CREATE -> ClientUI.create();
-            case CLIENT_BLOCK -> ClientUI.block();
-            case CLIENT_UNBLOCK -> ClientUI.unblock();
-            case CLIENT_DELETE -> ClientUI.delete();
-            case CLIENT_LIST -> ClientUI.list();
-            case CLIENT_ORDER_CARD -> ClientUI.orderCard();
+            case CLIENT_CREATE -> clientUI.create();
+            case CLIENT_BLOCK -> clientUI.block();
+            case CLIENT_UNBLOCK -> clientUI.unblock();
+            case CLIENT_DELETE -> clientUI.delete();
+            case CLIENT_LIST -> clientUI.list();
+            case CLIENT_ORDER_CARD -> clientUI.orderCard();
 
-            case ATM_CREATE -> AtmUI.create();
-            case ATM_BLOCK -> AtmUI.block();
-            case ATM_UNBLOCK -> AtmUI.unblock();
-            case ATM_DELETE -> AtmUI.delete();
-            case ATM_LIST -> AtmUI.list();
-            case ATM_SERVICES -> AtmUI.services();
+            case ATM_CREATE -> atmUI.create();
+            case ATM_BLOCK -> atmUI.block();
+            case ATM_UNBLOCK -> atmUI.unblock();
+            case ATM_DELETE -> atmUI.delete();
+            case ATM_LIST -> atmUI.list();
+            case ATM_SERVICES -> atmUI.services();
 
-            case LOGIN -> AuthUI.login();
-            case LOGOUT -> AuthUI.logout();
-            case PROFILE -> AuthUI.profile();
+            case LOGIN -> authUI.login();
+            case LOGOUT -> authUI.logout();
+            case PROFILE -> authUI.profile();
             case QUIT -> {
-                AuthUI.quit();
+                authUI.quit();
                 return;
             }
 
@@ -69,6 +91,7 @@ public class App {
                     Print.println(Color.RED, "Wrong Choice");
         }
         main(args);
+
     }
 
 }

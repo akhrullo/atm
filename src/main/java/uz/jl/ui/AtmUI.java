@@ -3,22 +3,25 @@ package uz.jl.ui;
 import java.util.Objects;
 
 /**
- * @author Elmurodov Javohir, Wed 4:45 PM. 12/8/2021
+ * @author Elmurodov Javohir, Wed 4:51 PM. 12/8/2021
  */
-public class BranchUI implements BaseUI{
+public class AtmUI implements BaseUI{
 
-    private static BranchUI branchUI;
+    private static AtmUI atmUI;
 
-    public static BranchUI getInstance() {
-        if (Objects.isNull(branchUI)){
-            return branchUI=new BranchUI();
+    public static AtmUI getInstance() {
+        if (Objects.isNull(atmUI)){
+            return atmUI=new AtmUI();
         }
-        return branchUI;
+        return atmUI;
     }
 
-    private BranchUI() {
+    private AtmUI() {
     }
 
+    public void services(){
+
+    }
     @Override
     public void create() {
 

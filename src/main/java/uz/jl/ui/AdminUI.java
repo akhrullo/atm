@@ -3,20 +3,21 @@ package uz.jl.ui;
 import java.util.Objects;
 
 /**
- * @author Elmurodov Javohir, Wed 4:45 PM. 12/8/2021
+ * @author Elmurodov Javohir, Wed 4:47 PM. 12/8/2021
  */
-public class BranchUI implements BaseUI{
+public class AdminUI implements BaseUI {
 
-    private static BranchUI branchUI;
 
-    public static BranchUI getInstance() {
-        if (Objects.isNull(branchUI)){
-            return branchUI=new BranchUI();
+    private static AdminUI adminUI;
+
+    public static AdminUI getInstance() {
+        if (Objects.isNull(adminUI)){
+            return adminUI=new AdminUI();
         }
-        return branchUI;
+        return adminUI;
     }
 
-    private BranchUI() {
+    private AdminUI() {
     }
 
     @Override
