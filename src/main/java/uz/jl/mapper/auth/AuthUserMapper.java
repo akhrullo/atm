@@ -6,6 +6,6 @@ import uz.jl.models.auth.AuthUser;
 /**
  * @author Elmurodov Javohir, Mon 6:20 PM. 12/6/2021
  */
-public class AuthUserMapper extends BaseMapper<AuthUser, AuthUserDto> {
+public class AuthUserMapper{
 
 }
