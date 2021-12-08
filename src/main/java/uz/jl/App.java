@@ -9,7 +9,6 @@ public class App {
 
     public static void main(String[] args) {
         try {
-            AuthUserService.login();
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
         }
