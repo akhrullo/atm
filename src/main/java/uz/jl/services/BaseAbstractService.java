@@ -16,6 +16,7 @@ import java.util.List;
  * @param <M> -> Mapper (Which maps entity to Dto or vise versa)
  */
 
+
 @Setter
 @Getter
 public abstract class BaseAbstractService<E, R, M> {
