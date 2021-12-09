@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import uz.jl.response.ResponseEntity;
 import uz.jl.services.auth.AuthUserService;
+import uz.jl.utils.BaseUtils;
 import uz.jl.utils.Color;
 import uz.jl.utils.Input;
 import uz.jl.utils.Print;
@@ -15,7 +16,7 @@ import java.util.StringTokenizer;
  * @author Elmurodov Javohir, Wed 4:52 PM. 12/8/2021
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class AuthUI {
+public class AuthUI extends BaseAbstractUI /*implements BaseUI*/ {
     private AuthUserService authUserService = AuthUserService.getInstance();
     private static AuthUI authUI;
 
@@ -31,10 +32,7 @@ public class AuthUI {
         String username = Input.getStr("Username : ");
         String password = Input.getStr("Password : ");
         ResponseEntity<String> response = authUserService.login(username, password);
-        if (response.getStatus().equals(200))
-            Print.println(Color.GREEN, response.getData());
-        else
-            Print.println(Color.RED, response.getData());
+        show(response);
     }
 
     public void logout() {

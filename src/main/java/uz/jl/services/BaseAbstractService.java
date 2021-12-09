@@ -4,6 +4,8 @@ package uz.jl.services;
  * @author Elmurodov Javohir, Mon 5:44 PM. 12/6/2021
  */
 
+import lombok.Getter;
+import lombok.Setter;
 import uz.jl.response.ResponseEntity;
 
 import java.util.List;
@@ -14,11 +16,13 @@ import java.util.List;
  * @param <M> -> Mapper (Which maps entity to Dto or vise versa)
  */
 
+@Setter
+@Getter
 public abstract class BaseAbstractService<E, R, M> {
     protected R repository;
     protected M mapper;
 
-    public BaseAbstractService(R repository, M mapper) {
+    protected BaseAbstractService(R repository, M mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
