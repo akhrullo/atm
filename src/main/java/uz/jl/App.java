@@ -1,16 +1,9 @@
 package uz.jl;
 
-import uz.jl.enums.auth.Role;
-import uz.jl.enums.settings.Language;
-import uz.jl.mapper.auth.AuthUserMapper;
-import uz.jl.models.auth.AuthUser;
-import uz.jl.services.filesystems.DB;
 import uz.jl.ui.*;
 import uz.jl.utils.Color;
 import uz.jl.utils.Input;
 import uz.jl.utils.Print;
-
-import java.util.Collections;
 
 import static uz.jl.ui.components.MenuVal.*;
 
@@ -37,6 +30,12 @@ public class App {
     }
 
     public static void main(String[] args) {
+
+        run(args);
+
+    }
+
+    private static void run(String[] args) {
         MenuUI.show();
         String choice = Input.getStr("?->");
         switch (choice.toUpperCase()) {
@@ -91,7 +90,6 @@ public class App {
                     Print.println(Color.RED, "Wrong Choice");
         }
         main(args);
-
     }
 
 }
