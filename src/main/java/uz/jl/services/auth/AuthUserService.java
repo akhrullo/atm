@@ -1,6 +1,5 @@
 package uz.jl.services.auth;
 
-import lombok.extern.slf4j.Slf4j;
 import uz.jl.configs.Session;
 import uz.jl.mapper.auth.AuthUserMapper;
 import uz.jl.models.auth.AuthUser;
@@ -20,16 +19,13 @@ import java.util.Objects;
 public class AuthUserService extends BaseAbstractService<AuthUser, AuthUserRepository, AuthUserMapper> {
     private static AuthUserService authUserService;
 
-    public AuthUserService(AuthUserRepository repository, AuthUserMapper mapper) {
+    private AuthUserService(AuthUserRepository repository, AuthUserMapper mapper) {
         super(repository, mapper);
     }
 
     public static AuthUserService getInstance() {
         if (authUserService == null) {
-            authUserService = new AuthUserService(
-                    AuthUserRepository.getInstance(),
-                    AuthUserMapper.getInstance()
-            );
+            authUserService = new AuthUserService(AuthUserRepository.getInstance(), AuthUserMapper.getInstance());
         }
         return authUserService;
     }

@@ -30,9 +30,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-
         run(args);
-
     }
 
     private static void run(String[] args) {
